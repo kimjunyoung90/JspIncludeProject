@@ -25,7 +25,7 @@
 function ok(zip,addr)
 {
 	parent.frm.post1.value=zip.substring(0,3);
-	parent.frm.post1.value=zip.substring(4,7);
+	parent.frm.post2.value=zip.substring(4,7);
 	parent.frm.addr1.value=addr;
 	parent.Shadowbox.close();
 }

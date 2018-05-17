@@ -11,5 +11,5 @@
 </jsp:useBean>
 <%
 	dao.memberJoin(vo);
-	response.sendRedirect("../member/welcome.jsp");
+	response.sendRedirect("../main/main.jsp?mode=5");
 %>

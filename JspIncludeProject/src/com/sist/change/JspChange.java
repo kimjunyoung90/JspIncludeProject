@@ -5,8 +5,9 @@ public class JspChange {
 	   "home.jsp",
 	   "../member/join.jsp",
 	   "../foodhouse/foodhouse.jsp",
-	   "",
-	   "../databoard/databoard.jsp"
+	   "../foodhouse/foodhouse.jsp",
+	   "../databoard/databoard.jsp",
+	   "../member/welcome.jsp"
    };
    // dno
    private static String[] databoard_jsp={
@@ -15,6 +16,15 @@ public class JspChange {
 	   "insert.jsp",
 	   "update.jsp"
    };
+   //mno
+   /*private static String[] member_jsp= {
+		   "",
+		   "welcome.jsp"
+   };
+   public static String member_changer(int no)
+   {
+	   return member_jsp[no];
+   }*/
    public static String change(int no)
    {
 	   return jsp[no];

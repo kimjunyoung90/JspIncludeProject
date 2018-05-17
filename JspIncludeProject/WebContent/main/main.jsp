@@ -18,6 +18,7 @@
    int no=Integer.parseInt(mode);
    String jsp=JspChange.change(no);
 %>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -35,24 +36,29 @@
 	<body>
 		<div id="page-wrapper">
 
+
 			<!-- Header -->
 				<div id="header-wrapper">
-					<!-- hea
-					derÃ·ºÎ(¸Þ´º) -->
+					<!-- headerÃ·ºÎ(¸Þ´º) -->
 					<jsp:include page="header.jsp"></jsp:include>
-					
 				</div>
+			<!-- Header end -->
 
-			    <!-- content -->
-			    <jsp:include page="<%=jsp %>"></jsp:include>
-			    <!-- content end -->
+
+			<!-- content -->
+			<jsp:include page="<%=jsp %>"></jsp:include>
+			<!-- content end -->
+			    
+			    
 			<!-- Footer -->
 			<div id="footer-wrapper">
 				<!-- footer Ã·ºÎ -->
 				<%@ include file="footer.jsp" %>
 		    </div>
+		    <!-- Footer end -->
 
-		<!-- Scripts -->
+
+			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/skel-viewport.min.js"></script>

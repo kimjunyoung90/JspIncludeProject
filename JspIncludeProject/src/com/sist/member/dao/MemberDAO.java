@@ -145,8 +145,99 @@ public class MemberDAO {
 		}
 		return count;
 	}
-	 public void memberJoin(MemberVO vo)
-	    {
-	    	
-	    }
+	/*
+	 * ID
+PWD
+NAME
+SEX
+BIRTHDAY
+EMAIL
+POST
+ADDR1
+ADDR2
+TEL
+	 */
+	public void memberJoin(MemberVO vo)
+	{
+	   try {
+		   getConnection();
+		   String sql="INSERT INTO food_member VALUES(?,?,?,?,?,?,?,?,?,?)";
+		   ps=conn.prepareStatement(sql);
+		   
+		   ps.setString(1, vo.getId());
+		   ps.setString(2, vo.getPwd());
+		   ps.setString(3, vo.getName());
+		   ps.setString(4, vo.getSex());
+		   ps.setString(5, vo.getBirthday());
+		   ps.setString(6, vo.getEmail());
+		   ps.setString(7, vo.getPost1()+"-"+vo.getPost2());
+		   ps.setString(8, vo.getAddr1());
+		   ps.setString(9, vo.getAddr2());
+		   ps.setString(10, vo.getTel1()+"-"+vo.getTel2()+"-"+vo.getTel3());
+		   
+		   ps.executeUpdate();
+	   }catch(Exception ex)
+	   {
+		   System.out.println(ex.getMessage());
+	   }
+	   finally 
+	   {
+		   disConnection();
+	   }
+	}
+	
+	// 로그인 
+	public String isLogin(String id,String pwd)
+    {
+    	String result="";
+    	try
+    	{
+    		getConnection();
+    		// ID존재여부 확인   => 1(존재),0(존재(X))
+    		String sql="SELECT COUNT(*) FROM food_member "
+    				  +"WHERE id=?";
+    		ps=conn.prepareStatement(sql);
+    		ResultSet rs=ps.executeQuery();
+    		rs.next();
+    		int count=rs.getInt(1);
+    		
+    		if(count==0)
+    		{
+    			result="NOID";
+    		}
+    		else
+    		{
+    			sql="SELECT pwd,name FROM food_member "
+    	    			   +"WHERE id=?";
+    	    			ps=conn.prepareStatement(sql);
+    	    			ps.setString(1, id);
+    	    			
+    	    			rs=ps.executeQuery();
+    	    			rs.next();
+    	    			
+    	    			String db_pwd=rs.getString(1);
+    	    			String name=rs.getString(2);
+    	    			rs.close();
+    	    			
+    	    			if(db_pwd.equals(pwd)) // Login
+    	    			{
+    	    				result=name;
+    	    			}
+    	    			else // pwd가 틀린상태
+    	    			{
+    	    				result="NOPWD";
+    	    			}
+    		}
+    		
+    	}catch(Exception ex)
+    	{
+    		System.out.println(ex.getMessage());
+    	}
+    	finally
+    	{
+    		disConnection();
+    	}
+    	return result;
+    }
+	
 }

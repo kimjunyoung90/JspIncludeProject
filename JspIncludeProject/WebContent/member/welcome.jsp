@@ -5,8 +5,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script>
+window.onload=function()
+{
+	setTimeout("init()",5000);
+}
+function init()
+{
+	location.href="../main/main.jsp";
+	}
+</script>
 </head>
 <body>
+  <div id="content-wrapper">
+	<div id="content">
+		<div class="container">
+			<div class="row">
+				<div class="12u">
 
+					<!-- Main Content -->
+					<section>
+						<img src="../member/welcome.jpg">
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
 </body>
 </html>
